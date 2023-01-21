@@ -12,10 +12,21 @@ import java.io.Serializable;
  * @author ericr
  */
 public class Role implements Serializable {
+    private int roleID;
     private String roleName;
+    
+    public Role(int roleID) {
+        this.roleID = roleID;
+        roleName = roleID == 1 ? "system admin" :
+                                 "regular user";
+    }
 
-    public Role(String role) {
-        this.roleName = role;
+    public int getRoleID() {
+        return roleID;
+    }
+
+    public void setRoleID(int roleID) {
+        this.roleID = roleID;
     }
 
     public String getRoleName() {

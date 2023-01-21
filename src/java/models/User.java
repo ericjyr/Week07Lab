@@ -27,7 +27,21 @@ public class User implements Serializable{
         this.role = role;
     }
 
-    
+    public User(String email, String firstName, String lastName, Role role) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.role = role;
+    }
+
+    public User() {
+       
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     
     public String getEmail() {
         return email;
