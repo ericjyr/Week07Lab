@@ -46,7 +46,7 @@
         <c:choose>
             <c:when test="${selecteduser eq null || users.isEmpty()}">
                 <h2>Add User</h2>
-                <form action="User" method="POST">
+                <form action="" method="POST">
                     Email: <input type="email" name="email" value="${email}"><br>
                     First name: <input type="text" name="firstname" value="${firstname}"><br>
                     Last name: <input type="text" name="lastname" value="${lastname}" ><br>
@@ -57,8 +57,8 @@
                         <option value="1">system admin</option>
                     </select><br>
 
-                    <input type="hidden" name="action" value="add">
-                    <input type="submit" value="Add user">
+
+                    <input type="submit" name="action" value="Add user">
                 </form>
                 ${formmessage}
             </c:when>    
@@ -79,16 +79,13 @@
                             system admin
                         </option>
                     </select><br>
-                    <input type="hidden" name="action" value="update">
-                    <input type="submit" value="Update">
+                    <input type="hidden" name="role" value="${selecteduser.role.roleID}">
+                    <input type="submit" name="action" value="Update">
+                    <input type="submit" name ="action" value="Cancel">
                     ${formmessage}
                 </form>         
 
-                <form action="User" method="POST">
-                    <input type="hidden" name="role" value="${selecteduser.role.roleID}">
-                    <input type="hidden" name="action" value="cancel">
-                    <input type="submit" value="Cancel">
-                </form>
+
             </c:otherwise>  
         </c:choose>
     </body>

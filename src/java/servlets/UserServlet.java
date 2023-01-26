@@ -60,7 +60,7 @@ public class UserServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
         
-        if(action.equals("cancel")) {
+        if(action.equals("Cancel")) {
             session.setAttribute("selecteduser", null);
             getServletContext().getRequestDispatcher("/WEB-INF/users.jsp" )
                 .forward(request, response);  
@@ -85,7 +85,7 @@ public class UserServlet extends HttpServlet {
             
             List<User> users = us.getAll();
             for (int i = 0; i < users.size(); i++) {
-                if (action.equals("add") && users.get(i).getEmail().equals(email)) {
+                if (action.equals("Add user") && users.get(i).getEmail().equals(email)) {
                     request.setAttribute("formmessage", "Email is in use"); 
                     formMessageSet = true;
                 }
@@ -99,11 +99,11 @@ public class UserServlet extends HttpServlet {
                     .forward(request, response); 
                 return;
             }
-            switch (action) {
-                case "add":
+            switch (action.toString()) {
+                case "Add user":
                     us.insert(email, firstName, lastName, password, Integer.parseInt(roleID));
                     break;
-                case "update":
+                case "Update":
                     us.update(email, firstName, lastName, password, Integer.parseInt(roleID));
                     session.setAttribute("selecteduser", null);
             }
