@@ -58,7 +58,7 @@ public class UserServlet extends HttpServlet {
 
         UserService us = new UserService();
         HttpSession session = request.getSession();
-        String action = request.getParameter("action");
+        String action = request.getParameter("submit");
         
         if(action.equals("Cancel")) {
             session.setAttribute("selecteduser", null);
